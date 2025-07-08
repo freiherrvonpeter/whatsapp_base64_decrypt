@@ -18,7 +18,7 @@ function hkdf(mediaKey, info, length = 112) {
     const hmac = crypto.createHmac('sha256', prk);
     hmac.update(Buffer.concat([prev, Buffer.from(info), Buffer.from([i + 1])]));
     prev = hmac.digest();
-    okm = Buffer.concat([okm, prev]);
+    okm = Buffer.concat([okm, prev]); 
   }
 
   return okm.slice(0, length);
@@ -41,8 +41,13 @@ async function decryptMedia(filePath, mediaKeyB64, mediaType = 'Image') {
 
   const decipher = crypto.createDecipheriv('aes-256-cbc', cipherKey, iv);
   const decrypted = Buffer.concat([decipher.update(cipherText), decipher.final()]);
+
   const padding = decrypted[decrypted.length - 1];
-  return decrypted.slice(0, -padding);
+  if (padding > 0 && padding <= 16) {
+    return decrypted.slice(0, -padding);
+  }
+
+  return decrypted;
 }
 
 app.post('/decrypt', async (req, res) => {
