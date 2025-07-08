@@ -21,7 +21,7 @@ Faça uma requisição POST para o endpoint:
 
     http://SEU_IP_AQUI:7245/decrypt
 
-Com o corpo da requisição (Content-Type: application/json):
+Com o corpo da requisição:
 
     {
       "url": "https://mmg.whatsapp.com/media.jpg",
