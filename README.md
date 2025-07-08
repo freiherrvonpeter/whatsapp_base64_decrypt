@@ -1,6 +1,7 @@
 🧩 Descriptografador de Mídias do WhatsApp
 
 Este serviço permite descriptografar mídias do WhatsApp (imagem ou áudio) a partir de uma mediaKey.
+
 🛠️ Como hospedar o serviço
 
 1- Clone o repositório para sua máquina:
