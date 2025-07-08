@@ -1,0 +1,8 @@
+services:
+  decrypt-api:
+    build: .
+    ports:
+      - "7245:7245"          
+    environment:
+      - PORT=7245            
+    restart: unless-stopped
